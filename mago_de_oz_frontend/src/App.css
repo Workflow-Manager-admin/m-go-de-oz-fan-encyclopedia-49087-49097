@@ -1,13 +1,55 @@
 /* CSS Variables for Theme Management */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
+  --primary: #1a1a2e;
+  --secondary: #16213e;
+  --accent: #e94560;
+  --bg-primary: #fff;
   --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --text-primary: #222034;
+  --text-secondary: #3a3e56;
+  --sidebar-color: #16213e;
+  --border-color: #ececf3;
+  --button-bg: #e94560;
+  --button-text: #fff;
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  background: var(--bg-primary);
+}
+
+.app-main {
+  margin-left: 220px;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+.main-content {
+  padding: 27px 42px 26px 42px;
+  margin-top: 0;
+  min-height: 68vh;
+  background: var(--bg-primary);
+}
+
+/* Responsive sidebar and paddings */
+@media (max-width: 900px) {
+  .app-main {
+    margin-left: 0;
+  }
+  .sidebar {
+    position: static;
+    width: 100vw;
+    height: auto;
+    flex-direction: row;
+  }
+  .main-content {
+    padding: 10px 4vw;
+  }
 }
 
 [data-theme="dark"] {

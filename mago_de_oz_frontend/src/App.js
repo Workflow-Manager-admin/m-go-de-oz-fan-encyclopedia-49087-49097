@@ -1,48 +1,70 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import Topbar from "./components/Topbar";
+import AlbumCatalog from "./pages/AlbumCatalog";
+import SongCatalog from "./pages/SongCatalog";
+import BandHistory from "./pages/BandHistory";
+import MemberProfiles from "./pages/MemberProfiles";
+import MediaGallery from "./pages/MediaGallery";
+import UserProfile from "./pages/UserProfile";
+import WikiEditor from "./pages/WikiEditor";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import PrivateRoute from "./components/PrivateRoute";
+import "./App.css";
 
 // PUBLIC_INTERFACE
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState("light");
+  const [search, setSearch] = useState("");
 
-  // Effect to apply theme to document element
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   // PUBLIC_INTERFACE
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
+  // Handles top search bar updates
+  const handleSearch = (query) => {
+    setSearch(query);
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <button 
-          className="theme-toggle" 
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        >
-          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
-        </button>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          Current theme: <strong>{theme}</strong>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app-layout">
+        <Sidebar />
+        <div className="app-main">
+          <Topbar
+            theme={theme}
+            onToggleTheme={toggleTheme}
+            onSearch={handleSearch}
+          />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<Navigate to="/albums" />} />
+              <Route path="/albums" element={<AlbumCatalog search={search} />} />
+              <Route path="/songs" element={<SongCatalog search={search} />} />
+              <Route path="/history" element={<BandHistory />} />
+              <Route path="/members" element={<MemberProfiles />} />
+              <Route path="/media" element={<MediaGallery />} />
+              <Route path="/profile" element={
+                  <PrivateRoute><UserProfile /></PrivateRoute>
+                } />
+              <Route path="/wiki/edit/:section" element={
+                  <PrivateRoute><WikiEditor /></PrivateRoute>
+                } />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="*" element={<h2>404 - Not Found</h2>} />
+            </Routes>
+          </main>
+        </div>
+      </div>
+    </Router>
   );
 }
 

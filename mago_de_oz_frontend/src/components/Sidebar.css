@@ -1,0 +1,63 @@
+.sidebar {
+  background: var(--sidebar-color, #16213e);
+  color: #fff;
+  width: 220px;
+  min-width: 200px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(30,30,50,0.05);
+}
+
+.sidebar-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 26px 24px 10px 24px;
+  letter-spacing: 1px;
+  background: var(--primary, #1a1a2e);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.wiki-badge {
+  font-size: 0.9rem;
+  background: var(--accent, #e94560);
+  color: #fff;
+  border-radius: 12px;
+  padding: 2px 10px;
+  margin-left: 10px;
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 18px 0 0 0;
+  margin: 0;
+  flex: 1;
+}
+
+.sidebar-links li {
+  margin-bottom: 10px;
+}
+
+.sidebar-links a {
+  color: inherit;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 12px 28px;
+  display: block;
+  border-left: 3px solid transparent;
+  transition: background 0.13s, border 0.13s;
+}
+
+.sidebar-links a.active,
+.sidebar-links a:focus,
+.sidebar-links a:hover {
+  background: #232344;
+  border-left: 3px solid var(--accent, #e94560);
+  color: #e94560;
+  font-weight: 700;
+}
