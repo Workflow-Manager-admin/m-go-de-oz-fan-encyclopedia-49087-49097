@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-primary, #fff);
+  color: var(--text-primary,#232344);
+}
+
+h2 {
+  color: var(--accent,#e94560);
+  margin-top: 0;
+}
+
+a {
+  color: var(--accent,#e94560);
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+}
+
+/* Card/Listing Utilities */
+.albums-list,
+.member-list,
+.media-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+}
+
+.album-card, .member-card {
+  border: 1.5px solid var(--border-color,#ececf3);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--text-primary,#222034);
+  min-width: 250px;
+  box-shadow: 0 1px 6px 0 rgba(20,20,30,0.04);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 13px 18px 13px 14px;
+  gap: 13px;
+  margin-bottom: 10px;
+  transition: box-shadow 0.17s;
+}
+
+.album-card:hover, .member-card:hover {
+  box-shadow: 0 2px 14px 0 rgba(30,30,50,0.12);
+}
+
+.album-cover, .member-photo {
+  width: 86px;
+  height: 86px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: #ddd;
+}
+
+.member-photo {
+  width: 60px; height: 60px;
+}
+
+.media-img {
+  width: 142px;
+  height: 142px;
+  object-fit: cover;
+  margin: 7px 8px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  background: #faf7fb;
+}
+
+/* Form Elements */
+input, textarea {
+  font-size: 1rem;
+  margin: 2px 0 8px 0;
+  padding: 8px;
+  border: 1px solid var(--border-color,#ececf3);
+  border-radius: 7px;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fafaff;
+  color: #222034;
+}
+
+input:focus, textarea:focus {
+  border: 1.1px solid var(--accent,#e94560);
+  outline: none;
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.btn-main {
+  background: var(--accent,#e94560);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-weight: 700;
+  padding: 9px 29px;
+  font-size: 1em;
+  margin-top: 7px;
+  cursor: pointer;
+  transition: background 0.14s;
+}
+
+.btn-main:hover, .btn-main:focus {
+  background: #b63d51;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
